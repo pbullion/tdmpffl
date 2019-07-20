@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "TDMPFFL",
+    "slug": "tdmpffl",
+    "privacy": "public",
+    "sdkVersion": "33.0.0",
+    "platforms": ["ios", "android", "web"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/tdmpfflIcon.png",
+    "splash": {
+      "image": "./assets/images/splashImage.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#fff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "bundleIdentifier": "com.poke.tdmpfflApp",
+      "buildNumber": "1.2.2",
+      "supportsTablet": false,
+      "isTabletOnly": false
+    }
+  }
+}

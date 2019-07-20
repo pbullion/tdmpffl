@@ -1,0 +1,228 @@
+{
+  "homeScreen": {
+    "header": "testing"
+  },
+  "calendar": {
+    "2018-08-22": [
+      {
+        "height": 50,
+        "name": "Fish Derby"
+      }
+    ],
+    "2018-08-23": [
+      {
+        "height": 50,
+        "name": "Surfside Draft"
+      }
+    ],
+    "2018-08-24": [
+      {
+        "height": 50,
+        "name": "Surfside Draft"
+      }
+    ],
+    "2018-08-25": [
+      {
+        "height": 50,
+        "name": "Surfside Draft"
+      }
+    ],
+    "2018-08-26": [
+      {
+        "height": 50,
+        "name": "Surfside Draft"
+      }
+    ],
+    "2018-08-27": [
+      {
+        "height": 50,
+        "name": "Surfside Draft"
+      }
+    ],
+    "2018-09-06": [
+      {
+        "height": 50,
+        "name": "First Game"
+      }
+    ],
+    "2018-10-06": [
+      {
+        "height": 50,
+        "name": "Steak Party"
+      }
+    ],
+    "2018-10-07": [
+      {
+        "height": 50,
+        "name": "Cowboys at Texans"
+      }
+    ]
+  },
+  "history": {
+
+  },
+  "currentWeek": "Week 0",
+  "currentStandings": [
+    {
+        "position": "1",
+        "teamName": "Patrick Bullion",
+        "wins": 0,
+        "losses": 0
+    },
+    {
+        "position": "2",
+        "teamName": "Dustin Williams",
+        "wins": 0,
+        "losses": 0
+    },
+    {
+        "position": "3",
+        "teamName": "Jonathan Meier",
+        "wins": 0,
+        "losses": 0
+    },
+    {
+        "position": "4",
+        "teamName": "Doug Sartin",
+        "wins": 0,
+        "losses": 0
+    },
+    {
+        "position": "5",
+        "teamName": "Caleb Jones",
+        "wins": 0,
+        "losses": 0
+    },
+    {
+        "position": "6",
+        "teamName": "Ray Medalla",
+        "wins": 0,
+        "losses": 0
+    },
+    {
+        "position": "7",
+        "teamName": "Zane Grant",
+        "wins": 0,
+        "losses": 0
+    },
+    {
+        "position": "8",
+        "teamName": "Jason Vredenburgh",
+        "wins": 0,
+        "losses": 0
+    },
+    {
+        "position": "9",
+        "teamName": "Jake Smith",
+        "wins": 0,
+        "losses": 0
+    },
+    {
+        "position": "10",
+        "teamName": "Eddie Capistran",
+        "wins": 0,
+        "losses": 0
+    },
+    {
+        "position": "11",
+        "teamName": "Brian Broussard",
+        "wins": 0,
+        "losses": 0
+    },
+    {
+        "position": "12",
+        "teamName": "Cody Guidry",
+        "wins": 0,
+        "losses": 0
+    }
+  ],
+  "overallRecords": {
+    "lastUpdated": "July 22, 2018",
+    "records": [
+      {
+        "position": "1",
+        "name": "Dustin Williams",
+        "wins": 52,
+        "losses": 26,
+        "percent": ".666"
+      },
+      {
+        "position": "2",
+        "name": "Brian Broussard",
+        "wins": 39,
+        "losses": 26,
+        "percent": ".600"
+      },
+      {
+        "position": "3",
+        "name": "Jake Smith",
+        "wins": 30,
+        "losses": 22,
+        "percent": ".577"
+      },
+      {
+        "position": "4",
+        "name": "Jonathan Meier",
+        "wins": 44,
+        "losses": 34,
+        "percent": ".564"
+      },
+      {
+        "position": "5",
+        "name": "Doug Sartin",
+        "wins": 41,
+        "losses": 37,
+        "percent": ".526"
+      },
+      {
+        "position": "6",
+        "name": "Zane Grant",
+        "wins": 31,
+        "losses": 34,
+        "percent": ".477"
+      },
+      {
+        "position": "7",
+        "name": "Eddie Capistran",
+        "wins": 37,
+        "losses": 41,
+        "percent": ".474"
+      },
+      {
+        "position": "8",
+        "name": "Patrick Bullion",
+        "wins": 36,
+        "losses": 42,
+        "percent": ".462"
+      },
+      {
+        "position": "9",
+        "name": "Ray Medalla",
+        "wins": 12,
+        "losses": 14,
+        "percent": ".462"
+      },
+      {
+        "position": "10",
+        "name": "Caleb Jones",
+        "wins": 35,
+        "losses": 43,
+        "percent": ".449"
+      },
+      {
+        "position": "11",
+        "name": "Cody Guidry",
+        "wins": 33,
+        "losses": 45,
+        "percent": ".423"
+      },
+      {
+        "position": "12",
+        "name": "Jason Vredenburgh",
+        "wins": 4,
+        "losses": 9,
+        "percent": ".308"
+      }
+    ]
+  }
+}
