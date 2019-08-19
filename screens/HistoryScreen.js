@@ -114,7 +114,13 @@ export default class HistoryScreen extends React.Component {
                   );
                 })
               : null}
-            <Text style={{ textAlign: "center", marginHorizontal: 50, marginVertical: 15 }}>
+            <Text
+              style={{
+                textAlign: "center",
+                marginHorizontal: 50,
+                marginVertical: 15
+              }}
+            >
               Doug and Eddie tied one time lolz, it's accounted for but not
               displayed.
             </Text>
@@ -173,11 +179,13 @@ const styles = StyleSheet.create({
   },
   historyHeader: {
     color: "#000",
-    fontSize: 35
+    fontSize: 35,
+    fontFamily: "neutra-text-bold"
   },
   historyHeader2: {
     color: "#000",
-    fontSize: 25
+    fontSize: 25,
+    fontFamily: "neutra-text-bold"
   },
   tdmpfflLogo: {
     width: 396,

@@ -19,7 +19,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "com.poke.tdmpfflApp",
-      "buildNumber": "2.0.3",
+      "buildNumber": "2.0.4",
       "supportsTablet": false,
       "isTabletOnly": false
     }
