@@ -27,225 +27,275 @@ export default class HomeScreen extends React.Component {
   };
 
   _onRefresh = () => {
-    this.setState({ refreshing: true });
-    axios.get(`http://localhost:3001/standings`).then(res => {
-      console.log(res);
-      const currentStandings = res.data;
-      currentStandings.sort(function(a, b) {
-        return a.record.divisionStanding > b.record.divisionStanding
-          ? 1
-          : b.record.divisionStanding > a.record.divisionStanding
-          ? -1
-          : 0;
-      });
-      this.setState({ currentStandings });
-    });
-    axios.get(`http://localhost:3001/standings/scoreboard`).then(res => {
-      console.log(res.data);
-      const scoreboard = res.data;
-      this.setState({ scoreboard });
-      this.setState({ refreshing: false });
-    });
+    // this.setState({ refreshing: true });
+    // axios.get(`http://localhost:3001/standings`).then(res => {
+    //   console.log(res);
+    //   const currentStandings = res.data;
+    //   currentStandings.sort(function(a, b) {
+    //     return a.record.divisionStanding > b.record.divisionStanding
+    //       ? 1
+    //       : b.record.divisionStanding > a.record.divisionStanding
+    //       ? -1
+    //       : 0;
+    //   });
+    //   this.setState({ currentStandings });
+    // });
+    // axios.get(`http://localhost:3001/standings/scoreboard`).then(res => {
+    //   console.log(res.data);
+    //   const scoreboard = res.data;
+    //   this.setState({ scoreboard });
+    //   this.setState({ refreshing: false });
+    // });
   };
 
   render() {
-    const day = moment(new Date()).format("dddd");
     return (
       <View style={styles.container}>
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
-
-          refreshControl=
-          {
+          refreshControl={
             <RefreshControl
               refreshing={this.state.refreshing}
               onRefresh={this._onRefresh}
             />
-          }>
+          }
+        >
           <View style={styles.welcomeContainer}>
             <Image source={logo} style={styles.tdmpfflLogo} />
-            <Text style={styles.currentScoreboardHeader}>Scoreboard</Text>
-            {this.state.scoreboard
-              ? this.state.scoreboard.map((item, index) => {
-                  return (
-                    <View style={styles.messageCard} key={index}>
-                      <View style={styles.messageRow}>
-                        <View
-                          style={{ flexDirection: "row", alignItems: "center" }}
-                        >
-                          <Text
-                            style={[
-                              styles.standing,
-                              {
-                                fontWeight:
-                                  item.teams[0].team.record.overallStanding <= 6
-                                    ? "bold"
-                                    : "normal",
-                                fontSize:
-                                  item.teams[0].team.record.overallStanding <= 6
-                                    ? 18
-                                    : 15
-                              }
-                            ]}
-                          >
-                            {item.teams[0].team.record.overallStanding}
-                          </Text>
-                          <Text style={styles.teamName}>
-                            {item.teams[0].team.teamLocation}{" "}
-                            {item.teams[0].team.teamNickname}
-                          </Text>
-                          <Text style={{ marginLeft: 8 }}>
-                            ({item.teams[0].team.record.overallWins}-
-                            {item.teams[0].team.record.overallLosses})
-                          </Text>
-                        </View>
-                        <Text style={styles.score}>{item.teams[0].score}</Text>
-                      </View>
-                      <View style={styles.messageRow}>
-                        <View
-                          style={{ flexDirection: "row", alignItems: "center" }}
-                        >
-                          <Text
-                            style={[
-                              styles.standing,
-                              {
-                                fontWeight:
-                                  item.teams[1].team.record.overallStanding <= 6
-                                    ? "bold"
-                                    : "normal",
-                                fontSize:
-                                  item.teams[1].team.record.overallStanding <= 6
-                                    ? 18
-                                    : 15
-                              }
-                            ]}
-                          >
-                            {item.teams[1].team.record.overallStanding}
-                          </Text>
-                          <Text style={styles.teamName}>
-                            {item.teams[1].team.teamLocation}{" "}
-                            {item.teams[1].team.teamNickname}
-                          </Text>
-                          <Text style={{ marginLeft: 8 }}>
-                            ({item.teams[1].team.record.overallWins}-
-                            {item.teams[1].team.record.overallLosses})
-                          </Text>
-                        </View>
-                        <Text style={styles.score}>{item.teams[1].score}</Text>
-                      </View>
-                    </View>
-                  );
-                })
-              : null}
-            <Text style={styles.currentStandingsHeader}>Current Standings</Text>
-            <Grid>
-              <Col size={1}>
-                <Text style={styles.standingsItemHeader}>Pos</Text>
-              </Col>
-              <Col size={2}>
-                <Text style={styles.standingsItemHeader}>Team</Text>
-              </Col>
-              <Col size={1}>
-                <Text style={styles.standingsItemHeader}>Win</Text>
-              </Col>
-              <Col size={1}>
-                <Text style={styles.standingsItemHeader}>Loss</Text>
-              </Col>
-            </Grid>
-            {this.state.currentStandings
-              ? this.state.currentStandings.map((item, index) => {
-                  return (
-                    <Grid style={{ height: 35 }} key={index}>
-                      <Col size={1}>
-                        <Text
-                          style={[
-                            styles.standingsItem,
-                            {
-                              fontWeight:
-                                item.record.divisionStanding <= 6
-                                  ? "bold"
-                                  : "normal"
-                            }
-                          ]}
-                        >
-                          {item.record.divisionStanding}
-                        </Text>
-                      </Col>
-                      <Col size={2}>
-                        <Text
-                          style={[
-                            styles.standingsItem,
-                            {
-                              fontWeight:
-                                item.record.divisionStanding <= 6
-                                  ? "bold"
-                                  : "normal"
-                            }
-                          ]}
-                        >
-                          {item.owners[0].firstName} {item.owners[0].lastName}
-                        </Text>
-                      </Col>
-                      <Col size={1}>
-                        <Text
-                          style={[
-                            styles.standingsItem,
-                            {
-                              fontWeight:
-                                item.record.divisionStanding <= 6
-                                  ? "bold"
-                                  : "normal"
-                            }
-                          ]}
-                        >
-                          {item.record.divisionWins}
-                        </Text>
-                      </Col>
-                      <Col size={1}>
-                        <Text
-                          style={[
-                            styles.standingsItem,
-                            {
-                              fontWeight:
-                                item.record.divisionStanding <= 6
-                                  ? "bold"
-                                  : "normal"
-                            }
-                          ]}
-                        >
-                          {item.record.divisionLosses}
-                        </Text>
-                      </Col>
-                    </Grid>
-                  );
-                })
-              : null}
+            <Text
+              style={{
+                fontFamily: "neutra-text-bold",
+                fontSize: 33,
+                marginTop: 15,
+                marginBottom: 15
+              }}
+            >
+              Countdown to draft
+            </Text>
+            <Text style={{ fontSize: 30 }}>
+              {moment("2019-08-22").diff(moment().utcOffset("-5:00"), "days")}
+             &nbsp;days
+            </Text>
+            <Text
+              style={{
+                fontFamily: "neutra-text-bold",
+                fontSize: 33,
+                marginTop: 15,
+                marginBottom: 15
+              }}
+            >
+              Countdown to first game
+            </Text>
+            <Text style={{ fontSize: 30 }}>
+              {moment("2019-09-05").diff(moment().utcOffset("-5:00"), "days")}
+             &nbsp;days
+            </Text>
           </View>
         </ScrollView>
       </View>
     );
   }
 
+  // @TODO fix this for when the season starts week 1
+  // render() {
+  //   const day = moment(new Date()).format("dddd");
+  //   return (
+  //     <View style={styles.container}>
+  //       <ScrollView
+  //         style={styles.container}
+  //         contentContainerStyle={styles.contentContainer}
+  //
+  //         refreshControl=
+  //         {
+  //           <RefreshControl
+  //             refreshing={this.state.refreshing}
+  //             onRefresh={this._onRefresh}
+  //           />
+  //         }>
+  //         <View style={styles.welcomeContainer}>
+  //           <Image source={logo} style={styles.tdmpfflLogo} />
+  //           <Text style={styles.currentScoreboardHeader}>Scoreboard</Text>
+  //           {this.state.scoreboard
+  //             ? this.state.scoreboard.map((item, index) => {
+  //                 return (
+  //                   <View style={styles.messageCard} key={index}>
+  //                     <View style={styles.messageRow}>
+  //                       <View
+  //                         style={{ flexDirection: "row", alignItems: "center" }}
+  //                       >
+  //                         <Text
+  //                           style={[
+  //                             styles.standing,
+  //                             {
+  //                               fontWeight:
+  //                                 item.teams[0].team.record.overallStanding <= 6
+  //                                   ? "bold"
+  //                                   : "normal",
+  //                               fontSize:
+  //                                 item.teams[0].team.record.overallStanding <= 6
+  //                                   ? 18
+  //                                   : 15
+  //                             }
+  //                           ]}
+  //                         >
+  //                           {item.teams[0].team.record.overallStanding}
+  //                         </Text>
+  //                         <Text style={styles.teamName}>
+  //                           {item.teams[0].team.teamLocation}{" "}
+  //                           {item.teams[0].team.teamNickname}
+  //                         </Text>
+  //                         <Text style={{ marginLeft: 8 }}>
+  //                           ({item.teams[0].team.record.overallWins}-
+  //                           {item.teams[0].team.record.overallLosses})
+  //                         </Text>
+  //                       </View>
+  //                       <Text style={styles.score}>{item.teams[0].score}</Text>
+  //                     </View>
+  //                     <View style={styles.messageRow}>
+  //                       <View
+  //                         style={{ flexDirection: "row", alignItems: "center" }}
+  //                       >
+  //                         <Text
+  //                           style={[
+  //                             styles.standing,
+  //                             {
+  //                               fontWeight:
+  //                                 item.teams[1].team.record.overallStanding <= 6
+  //                                   ? "bold"
+  //                                   : "normal",
+  //                               fontSize:
+  //                                 item.teams[1].team.record.overallStanding <= 6
+  //                                   ? 18
+  //                                   : 15
+  //                             }
+  //                           ]}
+  //                         >
+  //                           {item.teams[1].team.record.overallStanding}
+  //                         </Text>
+  //                         <Text style={styles.teamName}>
+  //                           {item.teams[1].team.teamLocation}{" "}
+  //                           {item.teams[1].team.teamNickname}
+  //                         </Text>
+  //                         <Text style={{ marginLeft: 8 }}>
+  //                           ({item.teams[1].team.record.overallWins}-
+  //                           {item.teams[1].team.record.overallLosses})
+  //                         </Text>
+  //                       </View>
+  //                       <Text style={styles.score}>{item.teams[1].score}</Text>
+  //                     </View>
+  //                   </View>
+  //                 );
+  //               })
+  //             : null}
+  //           <Text style={styles.currentStandingsHeader}>Current Standings</Text>
+  //           <Grid>
+  //             <Col size={1}>
+  //               <Text style={styles.standingsItemHeader}>Pos</Text>
+  //             </Col>
+  //             <Col size={2}>
+  //               <Text style={styles.standingsItemHeader}>Team</Text>
+  //             </Col>
+  //             <Col size={1}>
+  //               <Text style={styles.standingsItemHeader}>Win</Text>
+  //             </Col>
+  //             <Col size={1}>
+  //               <Text style={styles.standingsItemHeader}>Loss</Text>
+  //             </Col>
+  //           </Grid>
+  //           {this.state.currentStandings
+  //             ? this.state.currentStandings.map((item, index) => {
+  //                 return (
+  //                   <Grid style={{ height: 35 }} key={index}>
+  //                     <Col size={1}>
+  //                       <Text
+  //                         style={[
+  //                           styles.standingsItem,
+  //                           {
+  //                             fontWeight:
+  //                               item.record.divisionStanding <= 6
+  //                                 ? "bold"
+  //                                 : "normal"
+  //                           }
+  //                         ]}
+  //                       >
+  //                         {item.record.divisionStanding}
+  //                       </Text>
+  //                     </Col>
+  //                     <Col size={2}>
+  //                       <Text
+  //                         style={[
+  //                           styles.standingsItem,
+  //                           {
+  //                             fontWeight:
+  //                               item.record.divisionStanding <= 6
+  //                                 ? "bold"
+  //                                 : "normal"
+  //                           }
+  //                         ]}
+  //                       >
+  //                         {item.owners[0].firstName} {item.owners[0].lastName}
+  //                       </Text>
+  //                     </Col>
+  //                     <Col size={1}>
+  //                       <Text
+  //                         style={[
+  //                           styles.standingsItem,
+  //                           {
+  //                             fontWeight:
+  //                               item.record.divisionStanding <= 6
+  //                                 ? "bold"
+  //                                 : "normal"
+  //                           }
+  //                         ]}
+  //                       >
+  //                         {item.record.divisionWins}
+  //                       </Text>
+  //                     </Col>
+  //                     <Col size={1}>
+  //                       <Text
+  //                         style={[
+  //                           styles.standingsItem,
+  //                           {
+  //                             fontWeight:
+  //                               item.record.divisionStanding <= 6
+  //                                 ? "bold"
+  //                                 : "normal"
+  //                           }
+  //                         ]}
+  //                       >
+  //                         {item.record.divisionLosses}
+  //                       </Text>
+  //                     </Col>
+  //                   </Grid>
+  //                 );
+  //               })
+  //             : null}
+  //         </View>
+  //       </ScrollView>
+  //     </View>
+  //   );
+  // }
+
   componentDidMount() {
-    axios.get(`http://localhost:3001/standings`).then(res => {
-      // console.log(res);
-      const currentStandings = res.data;
-      currentStandings.sort(function(a, b) {
-        return a.record.divisionStanding > b.record.divisionStanding
-          ? 1
-          : b.record.divisionStanding > a.record.divisionStanding
-          ? -1
-          : 0;
-      });
-      this.setState({ currentStandings });
-    });
-    axios.get(`http://localhost:3001/standings/scoreboard`).then(res => {
-      // console.log(res.data);
-      const scoreboard = res.data;
-      // console.log('scoreboard *******', scoreboard);
-      this.setState({ scoreboard });
-    });
+    // axios.get(`http://localhost:3001/standings`).then(res => {
+    //   // console.log(res);
+    //   const currentStandings = res.data;
+    //   currentStandings.sort(function(a, b) {
+    //     return a.record.divisionStanding > b.record.divisionStanding
+    //       ? 1
+    //       : b.record.divisionStanding > a.record.divisionStanding
+    //       ? -1
+    //       : 0;
+    //   });
+    //   this.setState({ currentStandings });
+    // });
+    // axios.get(`http://localhost:3001/standings/scoreboard`).then(res => {
+    //   // console.log(res.data);
+    //   const scoreboard = res.data;
+    //   // console.log('scoreboard *******', scoreboard);
+    //   this.setState({ scoreboard });
+    // });
   }
 }
 
@@ -253,7 +303,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingTop: 40
+    paddingTop: 40,
+    fontFamily: "neutra-text-light"
   },
   messageCard: {
     backgroundColor: "#fff",

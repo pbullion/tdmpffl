@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Image,
   Platform,
@@ -7,56 +7,302 @@ import {
   Text,
   View,
   Dimensions,
-} from 'react-native';
-import codywoman from '../assets/images/chickens/codywoman.jpeg'
-import dougspraytan from '../assets/images/chickens/dougspraytan.jpeg'
-import calebtattoo from '../assets/images/chickens/calebtattoo.png'
-import zane from '../assets/images/chickens/zane.jpg'
+  StatusBar
+} from "react-native";
+import { Title, Card } from "react-native-paper";
+import * as Animatable from "react-native-animatable";
+import codywoman from "../assets/images/chickens/codywoman.jpeg";
+import dougspraytan from "../assets/images/chickens/dougspraytan.png";
+import calebtattoo from "../assets/images/chickens/calebtattoo.png";
+import zane from "../assets/images/chickens/zane.jpg";
+import brian1 from "../assets/images/chickens/brian1.jpeg";
+import brian2 from "../assets/images/chickens/brian2.jpeg";
+import brian3 from "../assets/images/chickens/brian3.jpeg";
 
 export default class ChickensScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+    title: "Chickens",
+    headerStyle: {
+      backgroundColor: "rgb(0,0,0)"
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontWeight: "bold"
+    }
   };
 
   render() {
     return (
-      <View style={styles.container}>
-          <Text style={styles.header}>Chickens</Text>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-                source={calebtattoo}
-                style={styles.chickenPic}
-            />
-              <Text style={styles.chickenName}>Caleb Jones</Text>
-              <Text style={styles.chickenYear}>2017</Text>
-              <Text style={styles.chickenPunishment}>Tattoo</Text>
-            <Image
-                source={zane}
-                style={styles.chickenPic}
-            />
-              <Text style={styles.chickenName}>Zane Grant</Text>
-              <Text style={styles.chickenYear}>2016</Text>
-              <Text style={styles.chickenPunishment}>Community Service</Text>
-              <Image
-                source={dougspraytan}
-                style={styles.chickenPic}
-            />
-              <Text style={styles.chickenName}>Doug Sartin</Text>
-              <Text style={styles.chickenYear}>2015</Text>
-              <Text style={styles.chickenPunishment}>Darkest Spray Tan Possible</Text>
-            <Image
-              source={codywoman}
-              style={styles.chickenPic}
-            />
-              <Text style={styles.chickenName}>Cody Guidry</Text>
-              <Text style={styles.chickenYear}>2014</Text>
-              <Text style={styles.chickenPunishment}>Drag on 6th Street</Text>
-          </View>
-
-        </ScrollView>
-
-      </View>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}
+      >
+        <StatusBar backgroundColor="blue" barStyle="light-content" />
+        <View style={{ width: "100%" }}>
+          <Animatable.View animation="bounceIn">
+            <Card style={styles.card}>
+              <Card.Cover source={brian1} style={styles.cardCover} />
+              <Card.Content>
+                <Title
+                  style={{
+                    fontFamily: "neutra-text-bold",
+                    marginTop: 10,
+                    textAlign: "center",
+                    fontSize: 25
+                  }}
+                >
+                  Brian Broussard
+                </Title>
+                <View
+                  style={{
+                    flexDirection: "column",
+                    width: "100%",
+                    justifyContent: "center",
+                    margin: 10
+                  }}
+                >
+                  <Text
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: 15,
+                      fontFamily: "neutra-text-bold",
+                      fontSize: 20,
+                      textAlign: "center"
+                    }}
+                  >
+                    2018
+                  </Text>
+                  <Text
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: 15,
+                      fontFamily: "neutra-text-bold",
+                      fontSize: 20,
+                      textAlign: "center"
+                    }}
+                  >
+                    Bring a chicken to a bar
+                  </Text>
+                  <Text
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: 15,
+                      fontFamily: "neutra-text-bold",
+                      fontSize: 20,
+                      textAlign: "center"
+                    }}
+                  >
+                    (the original punishment)
+                  </Text>
+                </View>
+              </Card.Content>
+            </Card>
+          </Animatable.View>
+          <Animatable.View animation="bounceIn">
+            <Card style={styles.card}>
+              <Card.Cover source={calebtattoo} style={styles.cardCover} />
+              <Card.Content>
+                <Title
+                  style={{
+                    fontFamily: "neutra-text-bold",
+                    marginTop: 10,
+                    textAlign: "center",
+                    fontSize: 25
+                  }}
+                >
+                  Caleb Jones
+                </Title>
+                <View
+                  style={{
+                    flexDirection: "column",
+                    width: "100%",
+                    justifyContent: "center",
+                    margin: 10
+                  }}
+                >
+                  <Text
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: 15,
+                      fontFamily: "neutra-text-bold",
+                      fontSize: 20,
+                      textAlign: "center"
+                    }}
+                  >
+                    2017
+                  </Text>
+                  <Text
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: 15,
+                      fontFamily: "neutra-text-bold",
+                      fontSize: 20,
+                      textAlign: "center"
+                    }}
+                  >
+                    Tattoo
+                  </Text>
+                </View>
+              </Card.Content>
+            </Card>
+          </Animatable.View>
+          <Animatable.View animation="bounceIn">
+            <Card style={styles.card}>
+              <Card.Cover source={zane} style={styles.cardCover} />
+              <Card.Content>
+                <Title
+                  style={{
+                    fontFamily: "neutra-text-bold",
+                    marginTop: 10,
+                    textAlign: "center",
+                    fontSize: 25
+                  }}
+                >
+                  Zane Grant
+                </Title>
+                <View
+                  style={{
+                    flexDirection: "column",
+                    width: "100%",
+                    justifyContent: "center",
+                    margin: 10
+                  }}
+                >
+                  <Text
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: 15,
+                      fontFamily: "neutra-text-bold",
+                      fontSize: 20,
+                      textAlign: "center"
+                    }}
+                  >
+                    2016
+                  </Text>
+                  <Text
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: 15,
+                      fontFamily: "neutra-text-bold",
+                      fontSize: 20,
+                      textAlign: "center"
+                    }}
+                  >
+                    Community Service
+                  </Text>
+                </View>
+              </Card.Content>
+            </Card>
+          </Animatable.View>
+          <Animatable.View animation="bounceIn">
+            <Card style={styles.card}>
+              <Card.Cover source={dougspraytan} style={styles.cardCover} />
+              <Card.Content>
+                <Title
+                  style={{
+                    fontFamily: "neutra-text-bold",
+                    marginTop: 10,
+                    textAlign: "center",
+                    fontSize: 25
+                  }}
+                >
+                  Doug Sartin
+                </Title>
+                <View
+                  style={{
+                    flexDirection: "column",
+                    width: "100%",
+                    justifyContent: "center",
+                    margin: 10
+                  }}
+                >
+                  <Text
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: 15,
+                      fontFamily: "neutra-text-bold",
+                      fontSize: 20,
+                      textAlign: "center"
+                    }}
+                  >
+                    2015
+                  </Text>
+                  <Text
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: 15,
+                      fontFamily: "neutra-text-bold",
+                      fontSize: 20,
+                      textAlign: "center"
+                    }}
+                  >
+                    Darkest Spray Tan
+                  </Text>
+                </View>
+              </Card.Content>
+            </Card>
+          </Animatable.View>
+          <Animatable.View animation="bounceIn">
+            <Card style={styles.card}>
+              <Card.Cover source={codywoman} style={styles.cardCover} />
+              <Card.Content>
+                <Title
+                  style={{
+                    fontFamily: "neutra-text-bold",
+                    marginTop: 10,
+                    textAlign: "center",
+                    fontSize: 25
+                  }}
+                >
+                  Cody Guidry
+                </Title>
+                <View
+                  style={{
+                    flexDirection: "column",
+                    width: "100%",
+                    justifyContent: "center",
+                    margin: 10
+                  }}
+                >
+                  <Text
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: 15,
+                      fontFamily: "neutra-text-bold",
+                      fontSize: 20,
+                      textAlign: "center"
+                    }}
+                  >
+                    2015
+                  </Text>
+                  <Text
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: 15,
+                      fontFamily: "neutra-text-bold",
+                      fontSize: 20,
+                      textAlign: "center"
+                    }}
+                  >
+                    Drag on 6th Street
+                  </Text>
+                </View>
+              </Card.Content>
+            </Card>
+          </Animatable.View>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -64,103 +310,18 @@ export default class ChickensScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff"
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 5
   },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
+  card: {
+    marginHorizontal: 4,
+    marginVertical: 8
+    // height: 1000
   },
-  chickenPic: {
-    width: Dimensions.get('window').width,
-    height: 450,
-    resizeMode: 'contain',
-    marginTop: 10,
-  },
-    header: {
-        fontSize: 50,
-        marginTop: 45,
-        color: '#000',
-        textAlign: 'center'
-    },
-    chickenName: {
-        fontSize: 30,
-        color: '#000',
-        marginTop: 10,
-        textAlign: 'center',
-    },
-    chickenYear: {
-        fontSize: 25,
-        color: '#000',
-        textAlign: 'center'
-    },
-    chickenPunishment: {
-        fontSize: 25,
-        color: '#000',
-        textAlign: 'center',
-        marginBottom: 10
-    },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  chicken: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
-  },
+  cardCover: {
+    width: "100%",
+    height: 700
+  }
 });

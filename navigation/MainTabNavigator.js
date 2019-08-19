@@ -2,8 +2,7 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import TabBarIcon from '../components/TabBarIcon';import HomeScreen from '../screens/HomeScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 import CalendarScreen from '../screens/CalendarScreen';
 import ChampionsScreen from '../screens/ChampionsScreen';
@@ -11,9 +10,17 @@ import ChickensScreen from '../screens/ChickensScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import TedBitzScreen from '../screens/TedBitzScreen';
 
-const HomeStack = createStackNavigator({
-    Home: HomeScreen,
+const config = Platform.select({
+    web: { headerMode: 'screen' },
+    default: {},
 });
+
+const HomeStack = createStackNavigator(
+    {
+        Home: HomeScreen,
+    },
+    config
+);
 
 HomeStack.navigationOptions = {
     tabBarLabel: 'Home',
@@ -22,102 +29,122 @@ HomeStack.navigationOptions = {
             focused={focused}
             name={
                 Platform.OS === 'ios'
-                    ? `ios-home${focused ? '' : '-outline'}`
+                    ? `ios-home`
                     : 'md-home'
             }
         />
     ),
 };
 
-const CalendarStack = createStackNavigator({
-    Calendar: CalendarScreen,
-});
+HomeStack.path = '';
+
+const CalendarStack = createStackNavigator(
+    {
+        Calendar: CalendarScreen,
+    },
+    config
+);
 
 CalendarStack.navigationOptions = {
     tabBarLabel: 'Calendar',
     tabBarIcon: ({ focused }) => (
-        <TabBarIcon
-            focused={focused}
-            name={Platform.OS === 'ios' ? `ios-calendar${focused ? '' : '-outline'}` : 'md-calendar'}
-        />
+        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-calendar' : 'md-calendar'} />
     ),
 };
 
-const TedBitzStack = createStackNavigator({
-    TedBitz: TedBitzScreen,
-});
+CalendarStack.path = '';
+
+const TedBitzStack = createStackNavigator(
+    {
+        TedBitz: TedBitzScreen,
+    },
+    config
+);
 
 TedBitzStack.navigationOptions = {
     tabBarLabel: 'TedBitz',
     tabBarIcon: ({ focused }) => (
-        <TabBarIcon
-            focused={focused}
-            name={Platform.OS === 'ios' ? `ios-book${focused ? '' : '-outline'}` : 'md-book'}
-        />
+        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-book' : 'md-book'} />
     ),
 };
 
-const MessagesStack = createStackNavigator({
-    Messages: MessagesScreen,
-});
+TedBitzStack.path = '';
+
+const MessagesStack = createStackNavigator(
+    {
+        Messages: MessagesScreen,
+    },
+    config
+);
 
 MessagesStack.navigationOptions = {
     tabBarLabel: 'Messages',
     tabBarIcon: ({ focused }) => (
-        <TabBarIcon
-            focused={focused}
-            name={Platform.OS === 'ios' ? `ios-alert${focused ? '' : '-outline'}` : 'md-alert'}
-        />
+        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-alert' : 'md-alert'} />
     ),
 };
-const HistoryStack = createStackNavigator({
-    History: HistoryScreen,
-});
+
+MessagesStack.path = '';
+
+const HistoryStack = createStackNavigator(
+    {
+        History: HistoryScreen,
+    },
+    config
+);
 
 HistoryStack.navigationOptions = {
     tabBarLabel: 'History',
     tabBarIcon: ({ focused }) => (
-        <TabBarIcon
-            focused={focused}
-            name={Platform.OS === 'ios' ? `ios-podium${focused ? '' : '-outline'}` : 'md-podium'}
-        />
+        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-podium' : 'md-podium'} />
     ),
 };
 
-const ChampionsStack = createStackNavigator({
-    Champions: ChampionsScreen,
-});
+HistoryStack.path = '';
+
+const ChampionsStack = createStackNavigator(
+    {
+        Champions: ChampionsScreen,
+    },
+    config
+);
 
 ChampionsStack.navigationOptions = {
     tabBarLabel: 'Champs',
     tabBarIcon: ({ focused }) => (
-        <TabBarIcon
-            focused={focused}
-            name={Platform.OS === 'ios' ? `ios-trophy${focused ? '' : '-outline'}` : 'md-trophy'}
-        />
+        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-trophy' : 'md-trophy'} />
     ),
 };
 
-const ChickensStack = createStackNavigator({
-    Chickens: ChickensScreen,
-});
+ChampionsStack.path = '';
+
+
+const ChickensStack = createStackNavigator(
+    {
+        Chickens: ChickensScreen,
+    },
+    config
+);
 
 ChickensStack.navigationOptions = {
     tabBarLabel: 'Chickens',
     tabBarIcon: ({ focused }) => (
-        <TabBarIcon
-            focused={focused}
-            name={Platform.OS === 'ios' ? `ios-sad${focused ? '' : '-outline'}` : 'md-sad'}
-        />
+        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-sad' : 'md-sad'} />
     ),
 };
 
-export default createBottomTabNavigator({
+ChickensStack.path = '';
+
+const tabNavigator = createBottomTabNavigator({
     HomeStack,
-    TedBitzStack,
-    HistoryStack,
     CalendarStack,
-    MessagesStack,
+    // TedBitzStack,
+    HistoryStack,
+    // MessagesStack,
     ChampionsStack,
-    ChickensStack,
+    ChickensStack
 });
+
+tabNavigator.path = '';
+
+export default tabNavigator;
